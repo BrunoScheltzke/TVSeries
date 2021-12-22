@@ -18,15 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .red
+        let viewController = TVSeriesViewController()
         window.rootViewController = viewController
         window.makeKeyAndVisible()
-//        let initialCoordinator = InitialCoordinator(window: window)
-//        initialCoordinator.startApp()
         
         return true
     }
-
 }
-
