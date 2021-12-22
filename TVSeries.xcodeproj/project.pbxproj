@@ -17,6 +17,9 @@
 		C89082852772C4160054D2EC /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89082822772C4160054D2EC /* UIView.swift */; };
 		C89082892772C4810054D2EC /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89082882772C4810054D2EC /* UIColor.swift */; };
 		C890828B2772C61A0054D2EC /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C890828A2772C61A0054D2EC /* APIService.swift */; };
+		C890828E2772D2900054D2EC /* TVSeriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C890828C2772D2900054D2EC /* TVSeriesCollectionViewCell.swift */; };
+		C890828F2772D2900054D2EC /* TVSeriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C890828D2772D2900054D2EC /* TVSeriesCollectionViewCell.xib */; };
+		C89082912772D48C0054D2EC /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89082902772D48C0054D2EC /* ImageManager.swift */; };
 		C8F1297C27729F4000AAF65B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F1297B27729F4000AAF65B /* AppDelegate.swift */; };
 		C8F1298527729F4100AAF65B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8F1298427729F4100AAF65B /* Assets.xcassets */; };
 		C8F1298827729F4100AAF65B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8F1298627729F4100AAF65B /* LaunchScreen.storyboard */; };
@@ -35,6 +38,9 @@
 		C89082822772C4160054D2EC /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		C89082882772C4810054D2EC /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		C890828A2772C61A0054D2EC /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		C890828C2772D2900054D2EC /* TVSeriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		C890828D2772D2900054D2EC /* TVSeriesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVSeriesCollectionViewCell.xib; sourceTree = "<group>"; };
+		C89082902772D48C0054D2EC /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		C8F1297827729F3F00AAF65B /* TVSeries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TVSeries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8F1297B27729F4000AAF65B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8F1298427729F4100AAF65B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -77,6 +83,8 @@
 				C89082772772C3450054D2EC /* TVSeriesViewController.swift */,
 				C89082782772C3450054D2EC /* TVSeriesViewModel.swift */,
 				C890827C2772C3550054D2EC /* TVSeries.swift */,
+				C890828C2772D2900054D2EC /* TVSeriesCollectionViewCell.swift */,
+				C890828D2772D2900054D2EC /* TVSeriesCollectionViewCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -97,6 +105,7 @@
 				C89082812772C4160054D2EC /* Collections + ReusableView.swift */,
 				C890827E2772C3E80054D2EC /* ShadowView.swift */,
 				C890828A2772C61A0054D2EC /* APIService.swift */,
+				C89082902772D48C0054D2EC /* ImageManager.swift */,
 			);
 			path = "Helper Classes";
 			sourceTree = "<group>";
@@ -193,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C890828F2772D2900054D2EC /* TVSeriesCollectionViewCell.xib in Resources */,
 				C8F1298827729F4100AAF65B /* LaunchScreen.storyboard in Resources */,
 				C8F1298527729F4100AAF65B /* Assets.xcassets in Resources */,
 			);
@@ -249,6 +259,8 @@
 			files = (
 				C89082852772C4160054D2EC /* UIView.swift in Sources */,
 				C8F1297C27729F4000AAF65B /* AppDelegate.swift in Sources */,
+				C890828E2772D2900054D2EC /* TVSeriesCollectionViewCell.swift in Sources */,
+				C89082912772D48C0054D2EC /* ImageManager.swift in Sources */,
 				C890827A2772C3450054D2EC /* TVSeriesViewModel.swift in Sources */,
 				C89082832772C4160054D2EC /* UIViewController.swift in Sources */,
 				C89082892772C4810054D2EC /* UIColor.swift in Sources */,

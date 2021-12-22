@@ -42,28 +42,27 @@ class TVSeriesViewController: UIViewController {
     
     func setupCollectionView() {
         collectionView.constraintFully(to: view)
+        collectionView.register(type: TVSeriesCollectionViewCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
     }
 }
 
 extension TVSeriesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tvSeries.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: UICollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        let cell: TVSeriesCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         let item = tvSeries[indexPath.row]
-        //        cell.item = item
+        cell.tvSeries = item
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = tvSeries[indexPath.row]
     }
-    
 }
 
 extension TVSeriesViewController: TVSeriesViewModelDelegate {
