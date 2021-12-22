@@ -11,15 +11,18 @@ class TVSeriesViewController: UIViewController {
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let width: CGFloat = 60
-        let height: CGFloat = 60
-
-        layout.itemSize = CGSize(width: width, height: height)
+        let padding: CGFloat =  50
+        let collectionViewSize = view.frame.size.width - padding
+        
+        layout.itemSize = CGSize(width: collectionViewSize/2, height: collectionViewSize)
         layout.footerReferenceSize = CGSize(width: view.frame.width, height: 100)
         layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         return collection
     }()
+    
+    let searchController = UISearchController()
     
     var viewModel: TVSeriesViewModelProtocol
 
@@ -38,6 +41,14 @@ class TVSeriesViewController: UIViewController {
         view.backgroundColor = .white
         setupCollectionView()
         viewModel.getTVSeries()
+        setupNavBar()
+    }
+    
+    func setupNavBar() {
+        navigationItem.title = "TVSeries Challenge"
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.delegate = self
     }
     
     func setupCollectionView() {
@@ -46,6 +57,13 @@ class TVSeriesViewController: UIViewController {
         collectionView.register(type: IndicatorCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter)
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+}
+
+extension TVSeriesViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        guard let search = searchBar.text else { return }
     }
 }
 

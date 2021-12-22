@@ -8,12 +8,15 @@
 import UIKit
 
 class TVSeriesCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    
     var imageManager: ImageManagerProtocol = ImageManager.shared
     
     var tvSeries: TVSeries? {
         didSet {
             guard let tvSeries = tvSeries else { return }
+            nameLabel.text = tvSeries.name
             if let image = tvSeries.image {
                 fetchImage(imagePath: image.medium)
             }

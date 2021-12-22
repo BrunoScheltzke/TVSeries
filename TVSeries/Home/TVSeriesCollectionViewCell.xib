@@ -12,17 +12,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TVSeriesCollectionViewCell" customModule="TVSeries" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="216" height="205"/>
+            <rect key="frame" x="0.0" y="0.0" width="201" height="355"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="216" height="205"/>
+                <rect key="frame" x="0.0" y="0.0" width="201" height="355"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kq2-AL-0iU" customClass="ShadowView" customModule="TVSeries" customModuleProvider="target">
-                        <rect key="frame" x="4" y="4" width="208" height="197"/>
+                        <rect key="frame" x="4" y="4" width="193" height="322.5"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mDR-oM-Ktd">
-                                <rect key="frame" x="0.0" y="0.0" width="208" height="197"/>
+                                <rect key="frame" x="0.0" y="0.0" width="193" height="322.5"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -33,20 +33,30 @@
                             <constraint firstItem="mDR-oM-Ktd" firstAttribute="leading" secondItem="kq2-AL-0iU" secondAttribute="leading" id="rL4-vh-BPe"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BgM-2W-fX3">
+                        <rect key="frame" x="4" y="330.5" width="193" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstItem="BgM-2W-fX3" firstAttribute="top" secondItem="kq2-AL-0iU" secondAttribute="bottom" constant="4" id="4yF-PF-kwa"/>
                 <constraint firstItem="kq2-AL-0iU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="9XI-aY-JTS"/>
                 <constraint firstItem="kq2-AL-0iU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="FkI-I6-h5d"/>
                 <constraint firstAttribute="trailing" secondItem="kq2-AL-0iU" secondAttribute="trailing" constant="4" id="HkT-jE-tl4"/>
-                <constraint firstAttribute="bottom" secondItem="kq2-AL-0iU" secondAttribute="bottom" constant="4" id="Nev-GR-kwd"/>
+                <constraint firstItem="BgM-2W-fX3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="NJR-5R-lkB"/>
+                <constraint firstAttribute="bottom" secondItem="BgM-2W-fX3" secondAttribute="bottom" constant="4" id="jzg-t2-Z6U"/>
+                <constraint firstAttribute="trailing" secondItem="BgM-2W-fX3" secondAttribute="trailing" constant="4" id="ofu-5X-KMq"/>
             </constraints>
-            <size key="customSize" width="216" height="205"/>
+            <size key="customSize" width="201" height="355"/>
             <connections>
                 <outlet property="imageView" destination="mDR-oM-Ktd" id="jJ9-Vr-4mH"/>
+                <outlet property="nameLabel" destination="BgM-2W-fX3" id="7wp-IK-bqA"/>
             </connections>
-            <point key="canvasLocation" x="252.17391304347828" y="150.33482142857142"/>
+            <point key="canvasLocation" x="241.30434782608697" y="200.55803571428569"/>
         </collectionViewCell>
     </objects>
     <resources>
