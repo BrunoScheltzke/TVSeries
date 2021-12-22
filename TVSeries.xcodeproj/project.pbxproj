@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7D8F4853BCC36154AB0BA1B1 /* Pods_TVSeries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E75B0625D467BF277C96383 /* Pods_TVSeries.framework */; };
+		C83EFBE22773D522007E9377 /* IndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83EFBE12773D522007E9377 /* IndicatorCell.swift */; };
 		C89082792772C3450054D2EC /* TVSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89082772772C3450054D2EC /* TVSeriesViewController.swift */; };
 		C890827A2772C3450054D2EC /* TVSeriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89082782772C3450054D2EC /* TVSeriesViewModel.swift */; };
 		C890827D2772C3550054D2EC /* TVSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = C890827C2772C3550054D2EC /* TVSeries.swift */; };
@@ -29,6 +30,7 @@
 		0AD42E8C1D24083B9A4F29EB /* Pods-TVSeries.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVSeries.debug.xcconfig"; path = "Target Support Files/Pods-TVSeries/Pods-TVSeries.debug.xcconfig"; sourceTree = "<group>"; };
 		4E75B0625D467BF277C96383 /* Pods_TVSeries.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TVSeries.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		649CF8293F3230B30C0CC03D /* Pods-TVSeries.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVSeries.release.xcconfig"; path = "Target Support Files/Pods-TVSeries/Pods-TVSeries.release.xcconfig"; sourceTree = "<group>"; };
+		C83EFBE12773D522007E9377 /* IndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorCell.swift; sourceTree = "<group>"; };
 		C89082772772C3450054D2EC /* TVSeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesViewController.swift; sourceTree = "<group>"; };
 		C89082782772C3450054D2EC /* TVSeriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesViewModel.swift; sourceTree = "<group>"; };
 		C890827C2772C3550054D2EC /* TVSeries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeries.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				C890827C2772C3550054D2EC /* TVSeries.swift */,
 				C890828C2772D2900054D2EC /* TVSeriesCollectionViewCell.swift */,
 				C890828D2772D2900054D2EC /* TVSeriesCollectionViewCell.xib */,
+				C83EFBE12773D522007E9377 /* IndicatorCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				C890827A2772C3450054D2EC /* TVSeriesViewModel.swift in Sources */,
 				C89082832772C4160054D2EC /* UIViewController.swift in Sources */,
 				C89082892772C4810054D2EC /* UIColor.swift in Sources */,
+				C83EFBE22773D522007E9377 /* IndicatorCell.swift in Sources */,
 				C890827D2772C3550054D2EC /* TVSeries.swift in Sources */,
 				C89082792772C3450054D2EC /* TVSeriesViewController.swift in Sources */,
 				C890828B2772C61A0054D2EC /* APIService.swift in Sources */,

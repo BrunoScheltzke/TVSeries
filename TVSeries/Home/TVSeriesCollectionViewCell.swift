@@ -28,4 +28,9 @@ class TVSeriesCollectionViewCell: UICollectionViewCell {
             }
         }
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+    }
 }

@@ -10,7 +10,7 @@ import Foundation
 struct TVSeries: Decodable {
     let id: Int
     let name: String
-    let premiered: String
+    let premiered: String?
     let officialSite: String?
     let image: ImageSize?
 }
