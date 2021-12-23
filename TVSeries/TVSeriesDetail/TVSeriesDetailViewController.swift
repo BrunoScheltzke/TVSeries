@@ -53,26 +53,11 @@ class TVSeriesDetailViewController: UIViewController {
         viewModel.getSeasons()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupNavBar()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationItem.backButtonTitle = ""
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.view.backgroundColor = .white
-        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
-        navigationController?.navigationBar.shadowImage = nil
-    }
-    
     // MARK: - Setup views
     func setupNavBar() {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
-        navigationController?.view.backgroundColor = .clear
     }
     
     func setupTableView() {
@@ -165,7 +150,7 @@ extension TVSeriesDetailViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let episode = seasons[indexPath.section].episodes[indexPath.row]
-        let viewModel = EpisodeDetailViewModel(episode: episode)
+        let viewModel = EpisodeDetailViewModel(episode: episode, of: viewModel.tvSeries)
         let viewController = EpisodeDetailViewController(viewModel: viewModel)
         navigationController?.pushViewController(viewController, animated: true)
     }

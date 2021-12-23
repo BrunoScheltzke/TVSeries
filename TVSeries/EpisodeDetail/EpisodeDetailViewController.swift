@@ -9,14 +9,18 @@ import UIKit
 
 class EpisodeDetailViewController: UIViewController {
     
+    // MARK: - Views
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var episodeLabel: UILabel!
     @IBOutlet weak var seasonLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    
+    // MARK: - Properties
     var viewModel: EpisodeDetailViewModelProtocol
     let imageManager: ImageManagerProtocol
-
+    
+    // MARK: - Life Cycle
     init(viewModel: EpisodeDetailViewModelProtocol, imageManager: ImageManagerProtocol = ImageManager.shared) {
         self.viewModel = viewModel
         self.imageManager = imageManager
@@ -30,6 +34,12 @@ class EpisodeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupImageView()
+        setupEpisode()
+    }
+    
+    // MARK: - Setup Views
+    func setupImageView() {
         if let image = viewModel.episode.image {
             imageManager.fetchImage(imagePath: image.original) { [weak self] result in
                 guard let self = self else { return }
@@ -40,12 +50,15 @@ class EpisodeDetailViewController: UIViewController {
         } else {
             imageView.isHidden = true
         }
+    }
+    
+    func setupEpisode() {
+        navigationItem.title = viewModel.tvSeries.name
         nameLabel.text = viewModel.episode.name
         seasonLabel.text = "Season \(viewModel.episode.season)"
         episodeLabel.text = "Episode \(viewModel.episode.number)"
         summaryLabel.text = viewModel.episode.summary?.htmlStripped
     }
-    
 }
 
 extension EpisodeDetailViewController: EpisodeDetailViewModelDelegate {}

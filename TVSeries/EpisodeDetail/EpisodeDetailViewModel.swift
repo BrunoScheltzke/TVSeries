@@ -11,13 +11,16 @@ protocol EpisodeDetailViewModelDelegate: NSObject {}
 protocol EpisodeDetailViewModelProtocol {
     var delegate: EpisodeDetailViewModelDelegate? { get set }
     var episode: Episode { get }
+    var tvSeries: TVSeries { get }
 }
 
 class EpisodeDetailViewModel: EpisodeDetailViewModelProtocol {
     weak var delegate: EpisodeDetailViewModelDelegate?
     var episode: Episode
+    var tvSeries: TVSeries
     
-    init(episode: Episode) {
+    init(episode: Episode, of tvSeries: TVSeries) {
         self.episode = episode
+        self.tvSeries = tvSeries
     }
 }

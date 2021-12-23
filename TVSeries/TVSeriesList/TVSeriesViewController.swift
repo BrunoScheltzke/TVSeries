@@ -56,6 +56,14 @@ class TVSeriesViewController: UIViewController {
         navigationItem.backButtonTitle = ""
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.view.backgroundColor = .white
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
+    }
+    
     // MARK: - View Setup
     private func setupNavBar() {
         navigationController?.navigationBar.tintColor = .black
