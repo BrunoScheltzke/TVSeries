@@ -104,13 +104,12 @@ extension TVSeriesDetailViewController: UIScrollViewDelegate {
 }
 
 extension TVSeriesDetailViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCell(for: indexPath)
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
-        let item = seasons[indexPath.section].episodes[indexPath.row]
-        cell.textLabel?.text = item.name
+        let episode = seasons[indexPath.section].episodes[indexPath.row]
+        cell.textLabel?.text = episode.name
         return cell
     }
     
@@ -124,5 +123,12 @@ extension TVSeriesDetailViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return seasons[section].name
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let episode = seasons[indexPath.section].episodes[indexPath.row]
+        let viewModel = EpisodeDetailViewModel(episode: episode)
+        let viewController = EpisodeDetailViewController(viewModel: viewModel)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
