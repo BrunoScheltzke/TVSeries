@@ -24,6 +24,13 @@ class TVSeriesViewController: UIViewController {
     
     let searchController = UISearchController()
     
+    var isFiltering: Bool {
+        let isSearchBarEmpty = searchController.searchBar.text?.isEmpty ?? true
+        return searchController.isActive && !isSearchBarEmpty
+    }
+    
+    var filteredTvSeries = [TVSeries]()
+    
     var viewModel: TVSeriesViewModelProtocol
 
     init(viewModel: TVSeriesViewModelProtocol = TVSeriesViewModel()) {
@@ -63,24 +70,29 @@ class TVSeriesViewController: UIViewController {
 extension TVSeriesViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        guard let search = searchBar.text else { return }
+        guard let search = searchBar.text, !search.isEmpty else { return }
+        viewModel.searchTVSeries(search: search)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        collectionView.reloadData()
     }
 }
 
 extension TVSeriesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.tvSeriesList.count
+        return isFiltering ? filteredTvSeries.count : viewModel.tvSeriesList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: TVSeriesCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        let item = viewModel.tvSeriesList[indexPath.row]
+        let item = isFiltering ? filteredTvSeries[indexPath.row] : viewModel.tvSeriesList[indexPath.row]
         cell.tvSeries = item
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = viewModel.tvSeriesList[indexPath.row]
+        let item = isFiltering ? filteredTvSeries[indexPath.row] : viewModel.tvSeriesList[indexPath.row]
     }
     
     // Adds activity indicator at bottom of collection view to present a loading animation while fetching extra tv series.
@@ -88,6 +100,7 @@ extension TVSeriesViewController: UICollectionViewDelegate, UICollectionViewData
         switch kind {
         case UICollectionView.elementKindSectionFooter:
             let footer: IndicatorCell = collectionView.dequeueReusableSupplementaryView(forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, for: indexPath)
+            isFiltering ? footer.indicator.stopAnimating() : footer.indicator.startAnimating()
             return footer
         default:
            assert(false, "Unexpected element kind")
@@ -95,7 +108,9 @@ extension TVSeriesViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
-        viewModel.getTVSeries()
+        if !isFiltering {
+            viewModel.getTVSeries()
+        }
     }
 }
 
@@ -106,5 +121,13 @@ extension TVSeriesViewController: TVSeriesViewModelDelegate {
     
     func didUpdateTVSeriesListWithItems(atRows rows: [Int]) {
         collectionView.insertItems(at: rows.map { IndexPath(row: $0, section: 0) })
+    }
+    
+    func didGet(_ filteredTVSeries: [TVSeries]) {
+        self.filteredTvSeries = filteredTVSeries
+        collectionView.reloadData()
+        if !filteredTVSeries.isEmpty {
+            collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        }
     }
 }

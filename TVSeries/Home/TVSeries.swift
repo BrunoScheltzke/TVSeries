@@ -19,3 +19,7 @@ struct ImageSize: Decodable {
     let medium: String
     let original: String
 }
+
+struct TVSeriesSearch: Decodable {
+    let show: TVSeries
+}

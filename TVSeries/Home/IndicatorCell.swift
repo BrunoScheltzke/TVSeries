@@ -25,6 +25,7 @@ class IndicatorCell: UICollectionReusableView {
     }
     
     func setup() {
+        indicator.hidesWhenStopped = true
         addSubview(indicator)
         indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
