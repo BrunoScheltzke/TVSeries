@@ -209,9 +209,9 @@
 				C8D1D77F2774C36F0015A67D /* Models */,
 				C890827B2772C3480054D2EC /* TVSeriesList */,
 				C83EFBE92773FC6F007E9377 /* TVSeriesDetail */,
+				C83EFBF427741679007E9377 /* EpisodeDetail */,
 				C89082872772C4330054D2EC /* Helper Classes */,
 				C89082862772C42C0054D2EC /* Extensions */,
-				C83EFBF427741679007E9377 /* EpisodeDetail */,
 			);
 			path = TVSeries;
 			sourceTree = "<group>";
