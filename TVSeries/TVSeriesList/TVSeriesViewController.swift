@@ -9,7 +9,7 @@ import UIKit
 
 class TVSeriesViewController: UIViewController {
     
-    lazy var collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let padding: CGFloat =  50
         let collectionViewSize = view.frame.size.width - padding
@@ -22,16 +22,16 @@ class TVSeriesViewController: UIViewController {
         return collection
     }()
     
-    let searchController = UISearchController()
+    private  let searchController = UISearchController()
     
-    var isFiltering: Bool {
+    private var isFiltering: Bool {
         let isSearchBarEmpty = searchController.searchBar.text?.isEmpty ?? true
         return searchController.isActive && !isSearchBarEmpty
     }
     
-    var filteredTvSeries = [TVSeries]()
+    private var filteredTvSeries = [TVSeries]()
     
-    var viewModel: TVSeriesViewModelProtocol
+    private var viewModel: TVSeriesViewModelProtocol
 
     init(viewModel: TVSeriesViewModelProtocol = TVSeriesViewModel()) {
         self.viewModel = viewModel
@@ -51,14 +51,14 @@ class TVSeriesViewController: UIViewController {
         setupNavBar()
     }
     
-    func setupNavBar() {
+    private func setupNavBar() {
         navigationItem.title = "TVSeries Challenge"
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.delegate = self
     }
     
-    func setupCollectionView() {
+    private func setupCollectionView() {
         collectionView.constraintFully(to: view)
         collectionView.register(type: TVSeriesCollectionViewCell.self)
         collectionView.register(type: IndicatorCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter)
@@ -93,6 +93,9 @@ extension TVSeriesViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = isFiltering ? filteredTvSeries[indexPath.row] : viewModel.tvSeriesList[indexPath.row]
+        let viewModel = TVSeriesDetailViewModel(tvServies: item)
+        let viewController = TVSeriesDetailViewController(viewModel: viewModel)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     // Adds activity indicator at bottom of collection view to present a loading animation while fetching extra tv series.
