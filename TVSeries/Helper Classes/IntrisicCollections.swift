@@ -1,6 +1,6 @@
 //
 //  IntrisicCollections.swift
-//  Boxifarma
+//  TVSeries
 //
 //  Created by Bruno Scheltzke on 13/06/20.
 //  Copyright © 2020 App5m. All rights reserved.

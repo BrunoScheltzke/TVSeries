@@ -14,7 +14,6 @@ protocol ImageManagerProtocol {
 }
 
 struct ImageManager: ImageManagerProtocol {
-    
     private init() {}
     static let shared = ImageManager()
     

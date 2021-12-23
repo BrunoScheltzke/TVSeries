@@ -9,6 +9,8 @@ import UIKit
 
 class TVSeriesViewController: UIViewController {
     
+    // MARK: - Views
+    private let searchController = UISearchController()
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let padding: CGFloat =  50
@@ -22,17 +24,15 @@ class TVSeriesViewController: UIViewController {
         return collection
     }()
     
-    private  let searchController = UISearchController()
-    
     private var isFiltering: Bool {
         let isSearchBarEmpty = searchController.searchBar.text?.isEmpty ?? true
         return searchController.isActive && !isSearchBarEmpty
     }
     
     private var filteredTvSeries = [TVSeries]()
-    
     private var viewModel: TVSeriesViewModelProtocol
 
+    // MARK: - Life Cycle
     init(viewModel: TVSeriesViewModelProtocol = TVSeriesViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -51,7 +51,14 @@ class TVSeriesViewController: UIViewController {
         setupNavBar()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.backButtonTitle = ""
+    }
+    
+    // MARK: - View Setup
     private func setupNavBar() {
+        navigationController?.navigationBar.tintColor = .black
         navigationItem.title = "TVSeries Challenge"
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -67,6 +74,7 @@ class TVSeriesViewController: UIViewController {
     }
 }
 
+// MARK: - Search delegate
 extension TVSeriesViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
@@ -79,6 +87,7 @@ extension TVSeriesViewController: UISearchBarDelegate {
     }
 }
 
+// MARK: - Collection view delegate & datasource
 extension TVSeriesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return isFiltering ? filteredTvSeries.count : viewModel.tvSeriesList.count

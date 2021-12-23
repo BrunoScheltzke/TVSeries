@@ -7,12 +7,9 @@
 
 import UIKit
 
-struct Season {
-    let name: String
-    let episodes: [Episode]
-}
-
 class TVSeriesDetailViewController: UIViewController {
+    
+    // MARK: - Views
     @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -22,17 +19,19 @@ class TVSeriesDetailViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: IntrinsicTableView!
     
+    // MARK: - Properties
     private var viewModel: TVSeriesDetailViewModelProtocol
     private let imageManager: ImageManagerProtocol
-    
     var seasons = [Season]()
     
     // The variant sizes the header view can be
     let headerViewDefaultHeight: CGFloat = 300
     let headerViewMinimunHeight: CGFloat = 100
+    var headerPreviousPosition: CGFloat = 0
     lazy var headerViewMaxHeight: CGFloat = view.frame.height
     var isShowingHeaderFullScreen: Bool = false
 
+    // MARK: - Life Cycle
     init(viewModel: TVSeriesDetailViewModelProtocol, imageManager: ImageManagerProtocol = ImageManager.shared) {
         self.viewModel = viewModel
         self.imageManager = imageManager
@@ -46,16 +45,43 @@ class TVSeriesDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
+        setupHeader()
+        setupNavBar()
+        setupScrollView()
+        setupTVSeries()
+        viewModel.getSeasons()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavBar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.view.backgroundColor = .white
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
+    }
+    
+    // MARK: - Setup views
+    func setupNavBar() {
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.view.backgroundColor = .clear
+    }
+    
+    func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerViewCode(type: UITableViewCell.self)
-        navigationItem.backButtonTitle = " "
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
-        scrollView.contentInset = UIEdgeInsets(top: headerViewDefaultHeight, left: 0, bottom: 0, right: 0)
-        scrollView.delegate = self
+    }
+    
+    func setupHeader() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(expandColapseHeaderImage))
         imageView.addGestureRecognizer(tap)
         imageView.isUserInteractionEnabled = true
@@ -67,15 +93,27 @@ class TVSeriesDetailViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func setupScrollView() {
+        scrollView.contentInset = UIEdgeInsets(top: headerViewDefaultHeight, left: 0, bottom: 0, right: 0)
+        scrollView.delegate = self
+    }
+    
+    func setupTVSeries() {
         nameLabel.text = viewModel.tvSeries.name
         summaryLabel.text = viewModel.tvSeries.summary?.htmlStripped
-        genresLabel.text = viewModel.tvSeries.genres.joined(separator: ", ")
+        genresLabel.text = "Genres: " + viewModel.tvSeries.genres.joined(separator: ", ")
         scheduleLabel.text = "Time: \(viewModel.tvSeries.schedule.time). Days: \(viewModel.tvSeries.schedule.days.joined(separator: ", "))"
-        viewModel.getSeasons()
     }
     
     @objc func expandColapseHeaderImage() {
-        imageViewHeightConstraint.constant = isShowingHeaderFullScreen ? headerViewDefaultHeight : view.frame.height
+        if isShowingHeaderFullScreen {
+            imageViewHeightConstraint.constant = headerPreviousPosition
+        } else {
+            headerPreviousPosition = imageViewHeightConstraint.constant
+            imageViewHeightConstraint.constant = view.frame.height
+        }
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut) {
             self.view.layoutIfNeeded()
         } completion: { _ in
@@ -109,7 +147,7 @@ extension TVSeriesDetailViewController: UITableViewDelegate, UITableViewDataSour
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
         let episode = seasons[indexPath.section].episodes[indexPath.row]
-        cell.textLabel?.text = episode.name
+        cell.textLabel?.text = "\(episode.number) - \(episode.name)"
         return cell
     }
     

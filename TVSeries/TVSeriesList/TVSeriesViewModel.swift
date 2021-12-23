@@ -25,7 +25,9 @@ class TVSeriesViewModel: TVSeriesViewModelProtocol {
     private let apiService: APIServiceProtocol
     var tvSeriesList: [TVSeries] = []
     
-    var pagination = 0
+    /// manages the pagination index to fetch tv series
+    private var pagination = 0
+    /// avoids performing an extra call if one is in place
     private var isFetchingTvSeries: Bool = false
     
     init(apiService: APIServiceProtocol = APIService()) {
@@ -38,8 +40,9 @@ class TVSeriesViewModel: TVSeriesViewModelProtocol {
         apiService.fetchTVSeries(pagination: pagination) { result in
             switch result {
             case .success(let tvSeries):
+                // increases pagination count for future request
                 self.pagination += 1
-                self.isFetchingTvSeries.toggle()
+                self.isFetchingTvSeries = false
                 self.tvSeriesList.append(contentsOf: tvSeries)
                 let rowsToUpdate = self.getRowsToUpdate(from: tvSeries)
                 self.delegate?.didUpdateTVSeriesListWithItems(atRows: rowsToUpdate)

@@ -43,7 +43,7 @@ class EpisodeDetailViewController: UIViewController {
         nameLabel.text = viewModel.episode.name
         seasonLabel.text = "Season \(viewModel.episode.season)"
         episodeLabel.text = "Episode \(viewModel.episode.number)"
-        summaryLabel.text = viewModel.episode.summary.htmlStripped
+        summaryLabel.text = viewModel.episode.summary?.htmlStripped
     }
     
 }
