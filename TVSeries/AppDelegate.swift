@@ -18,10 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
-        let viewController = TVSeriesViewController()
-        let navigationController = UINavigationController(rootViewController: viewController)
-        window.rootViewController = navigationController
         window.makeKeyAndVisible()
+        let initialCoordinator = InitialCoordinator(window: window)
+        initialCoordinator.startApp()
         
         return true
     }

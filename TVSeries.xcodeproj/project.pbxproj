@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7D8F4853BCC36154AB0BA1B1 /* Pods_TVSeries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E75B0625D467BF277C96383 /* Pods_TVSeries.framework */; };
+		C81C5CE427755B38007CABF1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81C5CE327755B38007CABF1 /* RoundButton.swift */; };
 		C83EFBE22773D522007E9377 /* IndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83EFBE12773D522007E9377 /* IndicatorCell.swift */; };
 		C83EFBE62773FC1B007E9377 /* TVSeriesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83EFBE32773FC1B007E9377 /* TVSeriesDetailViewController.swift */; };
 		C83EFBE72773FC1B007E9377 /* TVSeriesDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C83EFBE42773FC1B007E9377 /* TVSeriesDetailViewController.xib */; };
@@ -37,12 +38,15 @@
 		C8F1298527729F4100AAF65B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8F1298427729F4100AAF65B /* Assets.xcassets */; };
 		C8F1298827729F4100AAF65B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8F1298627729F4100AAF65B /* LaunchScreen.storyboard */; };
 		C8FB67772775363000B52159 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FB67762775363000B52159 /* Season.swift */; };
+		C8FB677927754BF400B52159 /* InitialCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FB677827754BF400B52159 /* InitialCoordinator.swift */; };
+		C8FB677B27754F8D00B52159 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FB677A27754F8D00B52159 /* SplashScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0AD42E8C1D24083B9A4F29EB /* Pods-TVSeries.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVSeries.debug.xcconfig"; path = "Target Support Files/Pods-TVSeries/Pods-TVSeries.debug.xcconfig"; sourceTree = "<group>"; };
 		4E75B0625D467BF277C96383 /* Pods_TVSeries.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TVSeries.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		649CF8293F3230B30C0CC03D /* Pods-TVSeries.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TVSeries.release.xcconfig"; path = "Target Support Files/Pods-TVSeries/Pods-TVSeries.release.xcconfig"; sourceTree = "<group>"; };
+		C81C5CE327755B38007CABF1 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		C83EFBE12773D522007E9377 /* IndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorCell.swift; sourceTree = "<group>"; };
 		C83EFBE32773FC1B007E9377 /* TVSeriesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVSeriesDetailViewController.swift; sourceTree = "<group>"; };
 		C83EFBE42773FC1B007E9377 /* TVSeriesDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVSeriesDetailViewController.xib; sourceTree = "<group>"; };
@@ -74,6 +78,8 @@
 		C8F1298727729F4100AAF65B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8F1298927729F4100AAF65B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8FB67762775363000B52159 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
+		C8FB677827754BF400B52159 /* InitialCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialCoordinator.swift; sourceTree = "<group>"; };
+		C8FB677A27754F8D00B52159 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,15 @@
 				649CF8293F3230B30C0CC03D /* Pods-TVSeries.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C81C5CE527755B3E007CABF1 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				C890827E2772C3E80054D2EC /* ShadowView.swift */,
+				C81C5CE327755B38007CABF1 /* RoundButton.swift */,
+			);
+			path = DesignSystem;
 			sourceTree = "<group>";
 		};
 		C83EFBE92773FC6F007E9377 /* TVSeriesDetail */ = {
@@ -151,7 +166,6 @@
 			children = (
 				C83EFBEC27740FCC007E9377 /* IntrisicCollections.swift */,
 				C89082812772C4160054D2EC /* Collections + ReusableView.swift */,
-				C890827E2772C3E80054D2EC /* ShadowView.swift */,
 				C890828A2772C61A0054D2EC /* APIService.swift */,
 				C89082902772D48C0054D2EC /* ImageManager.swift */,
 			);
@@ -206,14 +220,25 @@
 				C8F1298427729F4100AAF65B /* Assets.xcassets */,
 				C8F1298627729F4100AAF65B /* LaunchScreen.storyboard */,
 				C8F1298927729F4100AAF65B /* Info.plist */,
+				C8FB677827754BF400B52159 /* InitialCoordinator.swift */,
 				C8D1D77F2774C36F0015A67D /* Models */,
 				C890827B2772C3480054D2EC /* TVSeriesList */,
 				C83EFBE92773FC6F007E9377 /* TVSeriesDetail */,
 				C83EFBF427741679007E9377 /* EpisodeDetail */,
 				C89082872772C4330054D2EC /* Helper Classes */,
 				C89082862772C42C0054D2EC /* Extensions */,
+				C81C5CE527755B3E007CABF1 /* DesignSystem */,
+				C8FB677C27754F9C00B52159 /* SplashScreen */,
 			);
 			path = TVSeries;
+			sourceTree = "<group>";
+		};
+		C8FB677C27754F9C00B52159 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				C8FB677A27754F8D00B52159 /* SplashScreenViewController.swift */,
+			);
+			path = SplashScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C81C5CE427755B38007CABF1 /* RoundButton.swift in Sources */,
 				C83EFBE82773FC1B007E9377 /* TVSeriesDetailViewModel.swift in Sources */,
 				C89082852772C4160054D2EC /* UIView.swift in Sources */,
 				C8F1297C27729F4000AAF65B /* AppDelegate.swift in Sources */,
@@ -351,7 +377,9 @@
 				C890828B2772C61A0054D2EC /* APIService.swift in Sources */,
 				C8FB67772775363000B52159 /* Season.swift in Sources */,
 				C890827F2772C3E80054D2EC /* ShadowView.swift in Sources */,
+				C8FB677927754BF400B52159 /* InitialCoordinator.swift in Sources */,
 				C83EFBEB27740B45007E9377 /* String.swift in Sources */,
+				C8FB677B27754F8D00B52159 /* SplashScreenViewController.swift in Sources */,
 				C83EFBF327741676007E9377 /* EpisodeDetailViewModel.swift in Sources */,
 				C8D1D7852774C3AC0015A67D /* TVSeriesSearch.swift in Sources */,
 				C8D1D7812774C3880015A67D /* Schedule.swift in Sources */,
@@ -500,6 +528,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TVSeries/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Please allow to continue with biometric authentication";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -530,6 +559,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TVSeries/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Please allow to continue with biometric authentication";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
