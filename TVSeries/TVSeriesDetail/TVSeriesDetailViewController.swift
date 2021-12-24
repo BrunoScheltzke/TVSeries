@@ -17,6 +17,7 @@ class TVSeriesDetailViewController: UIViewController {
     @IBOutlet weak var genresLabel: UILabel!
     @IBOutlet weak var scheduleLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var favoriteButton: PrimaryRoundButton!
     @IBOutlet weak var tableView: IntrinsicTableView!
     
     // MARK: - Properties
@@ -36,6 +37,7 @@ class TVSeriesDetailViewController: UIViewController {
         self.viewModel = viewModel
         self.imageManager = imageManager
         super.init(nibName: nil, bundle: nil)
+        hidesBottomBarWhenPushed = true
         self.viewModel.delegate = self
     }
     
@@ -51,6 +53,7 @@ class TVSeriesDetailViewController: UIViewController {
         setupNavBar()
         setupScrollView()
         setupTVSeries()
+        setupFavoriteButton()
         viewModel.getSeasons()
     }
     
@@ -93,6 +96,11 @@ class TVSeriesDetailViewController: UIViewController {
         scheduleLabel.text = "Time: \(viewModel.tvSeries.schedule.time). Days: \(viewModel.tvSeries.schedule.days.joined(separator: ", "))"
     }
     
+    func setupFavoriteButton() {
+        let favoriteTitle = viewModel.isFavorite() ? "Unfavorite" : "Favorite"
+        favoriteButton.setTitle(favoriteTitle, for: .normal)
+    }
+    
     @objc func expandColapseHeaderImage() {
         if isShowingHeaderFullScreen {
             imageViewHeightConstraint.constant = headerPreviousPosition
@@ -105,6 +113,11 @@ class TVSeriesDetailViewController: UIViewController {
         } completion: { _ in
             self.isShowingHeaderFullScreen.toggle()
         }
+    }
+    
+    @IBAction func favorite(_ sender: Any) {
+        viewModel.toggleFavoriteStatus()
+        setupFavoriteButton()
     }
 }
 

@@ -15,15 +15,21 @@ protocol TVSeriesDetailViewModelDelegate: NSObject {
 protocol TVSeriesDetailViewModelProtocol {
     var delegate: TVSeriesDetailViewModelDelegate? { get set }
     var tvSeries: TVSeries { get }
+    func isFavorite() -> Bool
     func getSeasons()
+    func toggleFavoriteStatus()
 }
 
 class TVSeriesDetailViewModel: TVSeriesDetailViewModelProtocol {
     weak var delegate: TVSeriesDetailViewModelDelegate?
     let tvSeries: TVSeries
     private let apiService: APIServiceProtocol
+    private let localDatabase: LocalDatabaseProtocol
     
-    init(tvServies: TVSeries, apiService: APIServiceProtocol = APIService()) {
+    init(tvServies: TVSeries,
+         apiService: APIServiceProtocol = APIService(),
+         localDatabase: LocalDatabaseProtocol = LocalDatabase()) {
+        self.localDatabase = localDatabase
         self.tvSeries = tvServies
         self.apiService = apiService
     }
@@ -40,5 +46,13 @@ class TVSeriesDetailViewModel: TVSeriesDetailViewModelProtocol {
                 self.delegate?.failed(message: "Failed to get episode list. Try again later.")
             }
         }
+    }
+    
+    func isFavorite() -> Bool {
+        localDatabase.isFavorite(tvSeries: tvSeries)
+    }
+    
+    func toggleFavoriteStatus() {
+        localDatabase.toggleFavoriteStatus(for: tvSeries)
     }
 }

@@ -63,7 +63,7 @@ class PrimaryRoundButton: RoundButton {
     
     override func setup() {
         super.setup()
-        backgroundColor = .primaryColor
+        backgroundColor = .black
     }
     
 }

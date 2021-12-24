@@ -37,6 +37,7 @@ class TVSeriesViewController: UIViewController {
     init(viewModel: TVSeriesViewModelProtocol = TVSeriesViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        title = "TVSeries"
         self.viewModel.delegate = self
     }
     
@@ -68,7 +69,6 @@ class TVSeriesViewController: UIViewController {
     // MARK: - View Setup
     private func setupNavBar() {
         navigationController?.navigationBar.tintColor = .black
-        navigationItem.title = "TVSeries Challenge"
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.delegate = self

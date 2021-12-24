@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TVSeriesDetailViewController" customModule="TVSeries" customModuleProvider="target">
             <connections>
+                <outlet property="favoriteButton" destination="oT3-Xu-csO" id="htC-XN-7rZ"/>
                 <outlet property="genresLabel" destination="R7y-Wn-WNT" id="Bmm-G8-yFO"/>
                 <outlet property="imageView" destination="T60-Rx-WQN" id="jsf-uG-6At"/>
                 <outlet property="imageViewHeightConstraint" destination="Qbk-Wc-oen" id="e09-d0-aMi"/>
@@ -30,8 +31,8 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ja6-6t-kYD">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                     <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8gq-qW-f7n">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="2175"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="8gq-qW-f7n">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="2254"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOF-3i-GG3">
                                     <rect key="frame" x="16" y="16" width="382" height="17"/>
@@ -40,25 +41,33 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Sx-8x-idl">
-                                    <rect key="frame" x="16" y="41" width="382" height="17"/>
+                                    <rect key="frame" x="16" y="49" width="382" height="17"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7y-Wn-WNT">
-                                    <rect key="frame" x="16" y="66" width="382" height="14.5"/>
+                                    <rect key="frame" x="16" y="82" width="382" height="14.5"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="go5-jD-Ue3">
-                                    <rect key="frame" x="16" y="88.5" width="382" height="14.5"/>
+                                    <rect key="frame" x="16" y="112.5" width="382" height="14.5"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oT3-Xu-csO" customClass="PrimaryRoundButton" customModule="TVSeries" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="143" width="382" height="31"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Favorite"/>
+                                    <connections>
+                                        <action selector="favorite:" destination="-1" eventType="touchUpInside" id="pag-dF-38X"/>
+                                    </connections>
+                                </button>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="P6j-j9-FRw" customClass="IntrinsicTableView" customModule="TVSeries" customModuleProvider="target">
-                                    <rect key="frame" x="16" y="111" width="382" height="2048"/>
+                                    <rect key="frame" x="16" y="190" width="382" height="2048"/>
                                 </tableView>
                             </subviews>
                             <edgeInsets key="layoutMargins" top="16" left="16" bottom="16" right="16"/>
@@ -94,6 +103,11 @@
             <point key="canvasLocation" x="139" y="92"/>
         </view>
     </objects>
+    <designables>
+        <designable name="oT3-Xu-csO">
+            <size key="intrinsicContentSize" width="75.5" height="31"/>
+        </designable>
+    </designables>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

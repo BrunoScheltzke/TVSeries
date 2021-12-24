@@ -49,9 +49,18 @@ class InitialCoordinator {
     }
     
     func goToTVSeriesViewController() {
-        let viewController = TVSeriesViewController()
-        let navigationController = UINavigationController(rootViewController: viewController)
-        window?.rootViewController = navigationController
+        let tabBarController = UITabBarController()
+        
+        let tvSeriesViewController = TVSeriesViewController()
+        let tvSeriesNavigationController = UINavigationController(rootViewController: tvSeriesViewController)
+        tvSeriesNavigationController.tabBarItem.image = UIImage(systemName: "tv.fill")
+        
+        let favoriteViewController = FavoriteListViewController(viewModel: FavoriteListViewModel())
+        let favoriteNavigationController = UINavigationController(rootViewController: favoriteViewController)
+        favoriteNavigationController.tabBarItem.image = UIImage(systemName: "star.fill")
+        
+        tabBarController.viewControllers = [tvSeriesNavigationController, favoriteNavigationController]
+        window?.rootViewController = tabBarController
     }
 }
 
