@@ -7,9 +7,9 @@ Run the following command to install the dependencies
 `$ pod install`
 
 ### Bonus
-[x] Unlock with face/touch id
-[x] Favorite/unfavorite tv series
-[x] List favorited tv series and display details (not in alphabetic order)
+- [x] Unlock with face/touch id
+- [x] Favorite/unfavorite tv series
+- [x] List favorited tv series and display details (not in alphabetic order)
 
 ### Code
 
