@@ -6,6 +6,11 @@ After cloning the project
 Run the following command to install the dependencies
 `$ pod install`
 
+### Bonus
+[x] Unlock with face/touch id
+[x] Favorite/unfavorite tv series
+[x] List favorited tv series and display details (not in alphabetic order)
+
 ### Code
 
 - I have used the MVVM architecture. I chose this architecture as it's easy to use/understand, fast to develop and it's very scalable.
